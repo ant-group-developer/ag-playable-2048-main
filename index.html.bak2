@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <!-- CSP for Playables: adjust via DevTools Overrides when testing.
+       Default allows self + YouTube endpoints; inline styles needed for Vite. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.youtube.com https://*.googleapis.com https://*.gstatic.com 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.youtube.com https://*.googleapis.com https://*.gstatic.com; media-src 'self' blob:; worker-src 'self' blob:;" />
+  <title>2048 - Playable</title>
+  <!-- YouTube Playables SDK MUST load before any game code (MUST per certification) -->
+  <!-- Replace src with the real SDK URL from https://developers.google.com/youtube/gaming/playables/reference/sdk -->
+  <!-- When testing locally without SDK, src/platform/ytgame.ts provides a mock fallback -->
+  <script>
+    // Optional: if SDK URL not configured, the mock in ytgame.ts will take over.
+    // To use real SDK, uncomment and set correct URL:
+    // var s=document.createElement('script'); s.src='https://...ytgame SDK URL...'; s.async=false; document.head.appendChild(s);
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div>
+        <div class="title" data-i18n="title">2048</div>
+        <div class="subtitle">Join the tiles, get to <strong>2048!</strong></div>
+      </div>
+      <div class="scores">
+        <div class="score-box" aria-live="polite">
+          <div class="label" data-i18n="score">Score</div>
+          <div class="value" id="scoreVal">0</div>
+        </div>
+        <div class="score-box" aria-live="polite">
+          <div class="label" data-i18n="best">Best</div>
+          <div class="value" id="bestVal">0</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="top-actions">
+      <button class="btn" id="newGameBtn" data-i18n="newGame">New Game</button>
+    </div>
+
+    <div class="board-wrap" id="boardWrap" aria-label="2048 game board" role="application" tabindex="0"></div>
+
+    <div class="howto">
+      <strong data-i18n="howTo">HOW TO PLAY:</strong>
+      <span data-i18n="howToBody">Use arrow keys or swipe to move tiles. When two tiles with the same number touch, they merge into one!</span>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

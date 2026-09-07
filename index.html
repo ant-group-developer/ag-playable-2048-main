@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <title>2048 - Playable</title>
+  <!-- YouTube Playables SDK — MUST load before any game code (same as official pixijs sample).
+       When running outside YouTube (plain localhost with no test harness), the SDK runs as a
+       no-op and src/platform/ytgame.ts falls back to localStorage. -->
+  <script src="https://www.youtube.com/game_api/v1"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div>
+        <div class="title" data-i18n="title">2048</div>
+        <div class="subtitle">Join the tiles, get to <strong>2048!</strong></div>
+      </div>
+      <div class="scores">
+        <div class="score-box" aria-live="polite">
+          <div class="label" data-i18n="score">Score</div>
+          <div class="value" id="scoreVal">0</div>
+        </div>
+        <div class="score-box" aria-live="polite">
+          <div class="label" data-i18n="best">Best</div>
+          <div class="value" id="bestVal">0</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="top-actions">
+      <button class="btn" id="newGameBtn" data-i18n="newGame">New Game</button>
+    </div>
+
+    <div class="board-wrap" id="boardWrap" aria-label="2048 game board" role="application" tabindex="0"></div>
+
+    <div class="howto">
+      <strong data-i18n="howTo">HOW TO PLAY:</strong>
+      <span data-i18n="howToBody">Use arrow keys or swipe to move tiles. When two tiles with the same number touch, they merge into one!</span>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
